@@ -13,7 +13,7 @@ Install:
 $ npm install tracium
 ```
 
-Example:
+Use:
 
 ```js
 const Tracium = require('tracium');
@@ -23,6 +23,8 @@ const tasks = Tracium.computeMainThreadTasks(traceJSON, {
   flatten: true,
 });
 ```
+
+Check out examples at [//examples/](https://github.com/aslushnikov/tracium/tree/master/examples) folder.
 
 ## API
 
