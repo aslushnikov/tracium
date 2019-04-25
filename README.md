@@ -1,6 +1,7 @@
 # Tracium
 
-Tracium is a Lighthouse tracing parser extracted into a stand-alone library.
+*Tracium* is a [Google Lighthouse](https://github.com/GoogleChrome/lighthouse)
+tracing parser extracted into a stand-alone library.
 
 This is a modern version similar to [Big Rig](https://github.com/googlearchive/node-big-rig).
 
@@ -11,7 +12,7 @@ Install:
 $ npm install tracium
 ```
 
-Use:
+Example:
 
 ```js
 const Tracium = require('tracium');
@@ -22,25 +23,34 @@ const tasks = Tracium.process(traceJSON, {
 });
 ```
 
-Each `task` is an object with the following fields:
-- `kind` <[string]> describes task attribution. Can be one of the following:
-  - `'praseHTML'`
-  - `'styleLayout'`
-  - `'paintCompositeRender'`
-  - `'scriptParseCompile'`
-  - `'scriptEvaluation'`
-  - `'garbageCollection'`
-  - `'other'`
-- `startTime` <[number]> monotonic start time in milliseconds
-- `endTime` <[number]> monotonic end time in milliseconds
-- `duration` <[number]> task duration in milliseconds, a.k.a. "wall time"
-- `selfTime` <[number]> time spent in the task at the current level of the task tree
-- `event` <[Object]> original trace event object associated with the task
-- `children` <[Array<[Task]>> an array of child tasks
+## API
 
-Here's an example of a task:
+#### tracium.process(traceJson[, options])
+- `traceJson` <[Object]> A JSON of a Chromium trace
+- `options` <[Object]>  Set of options for trace processing
+  - `flatten` <[boolean]> Defaults to `false`. Whether to flatten tasks tree. 
+- returns: <[Array]<[Object]>> An array of tasks:
+  - `kind` <[string]> describes task attribution. Can be one of the following:
+    - `'praseHTML'`
+    - `'styleLayout'`
+    - `'paintCompositeRender'`
+    - `'scriptParseCompile'`
+    - `'scriptEvaluation'`
+    - `'garbageCollection'`
+    - `'other'`
+  - `startTime` <[number]> monotonic start time in milliseconds
+  - `endTime` <[number]> monotonic end time in milliseconds
+  - `duration` <[number]> task duration in milliseconds, a.k.a. "wall time"
+  - `selfTime` <[number]> time spent in the task at the current level of the task tree
+  - `event` <[Object]> original trace event object associated with the task
+  - `children` <[Array<[Task]>> an array of child tasks
+  - `parent` <?[Task]|> a parent task if any
 
-```
+If `flatten` is passed to `false`, than only top-level tasks will be returned.
+
+<details>
+<summary>An example task</summary>
+```js
 {
   event:
    { pid: 29772,
@@ -60,8 +70,9 @@ Here's an example of a task:
   children: [],
   duration: 0.027,
   selfTime: 0.027,
-  groupId: 'other' }
+  kind: 'other' }
 ```
+</details>
 
 [Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array "Array"
 [boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type "Boolean"

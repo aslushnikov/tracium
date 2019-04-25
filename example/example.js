@@ -7,7 +7,7 @@ const tasks = Tracium.process(require('./site-with-redirect.trace.json'), {
 
 let totalScriptTime = 0;
 for (const task of tasks) {
-  if (task.groupId === 'scriptEvaluation' || task.groupId === 'scriptParseCompile')
+  if (task.kind === 'scriptEvaluation' || task.kind === 'scriptParseCompile')
     totalScriptTime += task.selfTime;
 }
 
