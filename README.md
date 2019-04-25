@@ -50,7 +50,8 @@ If `flatten` is passed to `false`, than only top-level tasks will be returned.
 
 <details>
 <summary>An example task</summary>
-```js
+
+```
 {
   event:
    { pid: 29772,
