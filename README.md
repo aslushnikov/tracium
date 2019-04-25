@@ -44,7 +44,7 @@ const tasks = Tracium.computeMainThreadTasks(traceJSON, {
   - `duration` <[number]> task duration in milliseconds, a.k.a. "wall time"
   - `selfTime` <[number]> time spent in the task at the current level of the task tree
   - `event` <[Object]> original trace event object associated with the task
-  - `children` <[Array<[Task]>> an array of child tasks
+  - `children` <[Array]<[Task]>> an array of child tasks
   - `parent` <?[Task]|> a parent task if any
 
 Returns an array of tasks that belong to the main thread of the inspected page.
