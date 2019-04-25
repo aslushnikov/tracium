@@ -34,7 +34,7 @@ Check out examples at [//examples/](https://github.com/aslushnikov/tracium/tree/
   - `flatten` <[boolean]> Defaults to `false`. Whether to flatten tasks tree. 
 - returns: <[Array]<[Object]>> An array of tasks:
   - `kind` <[string]> describes task attribution. Can be one of the following:
-    - `'praseHTML'`
+    - `'parseHTML'`
     - `'styleLayout'`
     - `'paintCompositeRender'`
     - `'scriptParseCompile'`
