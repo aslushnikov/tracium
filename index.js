@@ -1,22 +1,20 @@
 const {MainThreadTasks} = require('./lib/main-thread-tasks.js');
 
-function cleanup(task) {
-  for (const child of task.children)
-    cleanup(child);
-
-  if (task.group) {
+function process(trace, options) {
+  const {
+    flatten = false,
+  } = options;
+  const allTasks = MainThreadTasks.compute(trace);
+  const result = [];
+  for (const task of allTasks) {
     task.groupId = task.group.id;
-    task.group = null;
-  } else {
-    console.log(task);
+    delete task.group;
+    delete task.attributableURLs;
+    if (!task.parent || flatten)
+      result.push(task);
+    delete task.parent;
   }
-  delete task.attributableURLs;
-}
-
-function process(trace) {
-  const tasks = MainThreadTasks.compute(trace);
-  tasks.forEach(cleanup);
-  return tasks;
+  return result;
 }
 
 module.exports = {process};
