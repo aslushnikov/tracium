@@ -1,6 +1,6 @@
 # Tracium
 
-*Tracium* is a [Google Lighthouse](https://github.com/GoogleChrome/lighthouse)
+*Tracium* is the [Google Lighthouse](https://github.com/GoogleChrome/lighthouse)
 tracing parser extracted into a stand-alone library.
 
 Tracium is a modern alternative to [Big Rig](https://github.com/googlearchive/node-big-rig).
