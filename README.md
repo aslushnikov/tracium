@@ -17,7 +17,7 @@ Example:
 
 ```js
 const Tracium = require('tracium');
-const traceJSON = JSON.parse(fs.readFileSynt('./mytrace.json'));
+const traceJSON = JSON.parse(fs.readFileSync('./mytrace.json', 'utf8'));
 const tasks = Tracium.computeMainThreadTasks(traceJSON, {
   // |flatten| default to |false|. When false, only top-level tasks will be returned.
   flatten: true,
