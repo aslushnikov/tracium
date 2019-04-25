@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Tracium = require('..');
 
-const tasks = Tracium.process(require('./site-with-redirect.trace.json'), {
+const tasks = Tracium.computeMainThreadTasks(require('./site-with-redirect.trace.json'), {
   flatten: true,
 });
 

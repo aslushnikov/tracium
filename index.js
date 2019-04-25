@@ -6,7 +6,7 @@
 
 const {MainThreadTasks} = require('./lib/main-thread-tasks.js');
 
-function process(trace, options = {}) {
+function computeMainThreadTasks(trace, options = {}) {
   const {
     flatten = false,
   } = options;
@@ -22,4 +22,4 @@ function process(trace, options = {}) {
   return result;
 }
 
-module.exports = {process};
+module.exports = {computeMainThreadTasks};
