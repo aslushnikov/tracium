@@ -9,15 +9,12 @@ const {MainThreadTasks} = require('./lib/main-thread-tasks.js');
 function computeMainThreadTasks(trace, options = {}) {
   const {
     flatten = false,
-    keepAttributableURLs = false
   } = options;
   const allTasks = MainThreadTasks.compute(trace);
   const result = [];
   for (const task of allTasks) {
     task.kind = task.group.id;
     delete task.group;
-    if (!keepAttributableURLs)
-      delete task.attributableURLs;
     if (!task.parent || flatten)
       result.push(task);
   }
