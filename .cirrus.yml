@@ -1,8 +1,9 @@
 container:
   image: node:latest
 
-check_task:
+task:
   node_modules_cache:
     folder: node_modules
     populate_script: npm install
   test_script: npm test
+  name: Tracium Tests
