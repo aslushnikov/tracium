@@ -15,7 +15,6 @@ function computeMainThreadTasks(trace, options = {}) {
   for (const task of allTasks) {
     task.kind = task.group.id;
     delete task.group;
-    delete task.attributableURLs;
     if (!task.parent || flatten)
       result.push(task);
   }
