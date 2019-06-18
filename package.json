@@ -1,6 +1,6 @@
 {
   "name": "tracium",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Chromium trace parser",
   "main": "index.js",
   "repository": "github:aslushnikov/tracium",
